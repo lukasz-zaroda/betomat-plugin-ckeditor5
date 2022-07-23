@@ -1,0 +1,10 @@
+{
+	"plugins": [
+		{
+			"name": "Betomat",
+			"className": "Betomat",
+			"path": "src/betomat.js",
+			"description": "Provides text analysis capabilities for CKEditor 5"
+		}
+	]
+}

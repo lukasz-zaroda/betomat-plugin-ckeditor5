@@ -1,0 +1,18 @@
+.ck.ck-betomat-form {
+  fieldset {
+    border: 0;
+    > button {
+      display: flex;
+      width: 100%;
+    }
+  }
+
+  &__word-groups {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__word-groups-label {
+    font-weight: 600;
+  }
+}

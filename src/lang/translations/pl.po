@@ -1,0 +1,12 @@
+msgid ""
+msgstr ""
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+msgctxt "Setting to show shadows of all found words."
+msgid "Show shadows"
+msgstr "Pokaż cienie"
+
+msgctxt "Title of the configuration section displaying groups of words that can be highlighted."
+msgid "Highlight groups"
+msgstr "Wyróżnij grupy"

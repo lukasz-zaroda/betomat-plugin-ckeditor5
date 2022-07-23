@@ -1,0 +1,6 @@
+.idea/
+*.iml
+local/
+node_modules/
+yarn-error.log
+webpack.config.js
