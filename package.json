@@ -1,8 +1,13 @@
 {
   "name": "betomat-plugin-ckeditor5",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "build/betomat.js",
   "license": "GPL-2.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lukasz-zaroda/betomat-plugin-ckeditor5.git"
+  },
+  "homepage": "https://github.com/lukasz-zaroda/betomat-plugin-ckeditor5",
   "scripts": {
     "dev:build": "NODE_ENV=development ./node_modules/.bin/webpack --mode development --config ./webpack.config.js",
     "prod:build": "NODE_ENV=production ./node_modules/.bin/webpack --mode production --config ./webpack.config.js",
