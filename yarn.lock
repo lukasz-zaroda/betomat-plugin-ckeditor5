@@ -2,6 +2,40 @@
 # yarn lockfile v1
 
 
+"@ckeditor/ckeditor5-core@^34.2.0":
+  version "34.2.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-core/-/ckeditor5-core-34.2.0.tgz#4ba72e3407310843a784630c598501ccc42a585b"
+  integrity sha512-6K0aToibRt28sCVYpMqdSKGvMifjwziqxLxyEh38CyDZJBUf7QPEAPlEpKAFTisHNEmC4471tr8UPpvNgqUXGA==
+  dependencies:
+    "@ckeditor/ckeditor5-engine" "^34.2.0"
+    "@ckeditor/ckeditor5-ui" "^34.2.0"
+    "@ckeditor/ckeditor5-utils" "^34.2.0"
+    lodash-es "^4.17.15"
+
+"@ckeditor/ckeditor5-engine@^34.2.0":
+  version "34.2.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-engine/-/ckeditor5-engine-34.2.0.tgz#449376625bad9e8beea9e89e201dd4fb599fc38f"
+  integrity sha512-9/i6TZ+Sy5T6hnuCtmeLTfwLSY8LaS7qFkW6gsM9NEB+LSSu930GP0Ss30Nw6dYo/JmYiQEpkiRJzKYIjrH8Pg==
+  dependencies:
+    "@ckeditor/ckeditor5-utils" "^34.2.0"
+    lodash-es "^4.17.15"
+
+"@ckeditor/ckeditor5-ui@^34.2.0":
+  version "34.2.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-ui/-/ckeditor5-ui-34.2.0.tgz#56a0fe2eb87c2e44b6c6d9440e6b6077a244214c"
+  integrity sha512-XL561G/e3b1YLGHNjLxS9IgoVn4BSugHmidEXYNUTMLATRCKld1XMUKFsB/wm3DwLBUfWn4d2j3qdcO2CnDuBg==
+  dependencies:
+    "@ckeditor/ckeditor5-core" "^34.2.0"
+    "@ckeditor/ckeditor5-utils" "^34.2.0"
+    lodash-es "^4.17.15"
+
+"@ckeditor/ckeditor5-utils@^34.2.0":
+  version "34.2.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-utils/-/ckeditor5-utils-34.2.0.tgz#d84177671afbc849b0435075f00311f9cc181288"
+  integrity sha512-jHJV2S8DzmpVvd3jdercY6HsGRAwpm/MK79Rs/Mrc3NNYKzN9SVFs/NLbrELNoMZeJ1WKt5BwKgBY+PEOpfyLw==
+  dependencies:
+    lodash-es "^4.17.15"
+
 "@discoveryjs/json-ext@^0.5.0":
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz#1d572bfbbe14b7704e0ba0f39b74815b84870d70"
@@ -798,7 +832,7 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
-lodash-es@^4.17.21:
+lodash-es@^4.17.15, lodash-es@^4.17.21:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
   integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
