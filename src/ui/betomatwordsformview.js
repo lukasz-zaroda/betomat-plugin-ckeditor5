@@ -44,8 +44,6 @@ export default class BetomatWordsFormView extends View {
 		this._setShowShadowHiglightsCommand = setShowShadowHiglightsCommand;
 		this._updateWordGroupSettingCommand = updateWordGroupSettingCommand;
 
-		const t = locale.t;
-
 		this._mainFieldset = this._createMainFieldset();
 		this._wordsFieldset = this._createWordsFieldset();
 
@@ -54,7 +52,8 @@ export default class BetomatWordsFormView extends View {
 			attributes: {
 				class: [
 					'ck',
-					'ck-betomat-form'
+					'ck-betomat-form',
+					'ck-reset_all-excluded'
 				],
 
 				tabindex: '-1'
@@ -99,7 +98,6 @@ export default class BetomatWordsFormView extends View {
 		for (/** @type {WordGroup} */const wordGroup of this._state.getWordGroups()) {
 			switches.push(
 				this._createWordGroupHighlightSwitchField(
-					wordGroup.label,
 					wordGroup,
 					(e) => {
 						this._updateWordGroupSettingCommand.execute(wordGroup.type, 'isHighlighted', !e.source.isOn);
@@ -141,10 +139,10 @@ export default class BetomatWordsFormView extends View {
 		const view = new SwitchButtonView(this.locale);
 		view.bind('isOn').to(this._state, 'showShadowHighlights');
 
-		view.set( {
+		view.set({
 			withText: true,
 			label: label,
-		} );
+		});
 
 		view.on('execute', (e) => {
 			this._setShowShadowHiglightsCommand.execute(!e.source.isOn);
@@ -153,15 +151,20 @@ export default class BetomatWordsFormView extends View {
 		return view;
 	}
 
-	_createWordGroupHighlightSwitchField(label, wordGroup, executeCallback) {
+	_createWordGroupHighlightSwitchField(wordGroup, executeCallback) {
 		const view = new SwitchButtonView(this.locale);
 		view.bind('isOn').to(wordGroup, 'isHighlighted');
 
-		view.set( {
+		view.set({
 			withText: true,
-			label: label,
-		} );
+			label: wordGroup.label,
+		});
 
+		view.extendTemplate({
+			attributes: {
+				class: `ck-betomat-form__word-group ck-betomat-form__word-group--${wordGroup.type}`
+			}
+		});
 
 		view.on('execute', executeCallback)
 
