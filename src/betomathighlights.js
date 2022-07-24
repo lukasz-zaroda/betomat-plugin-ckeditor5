@@ -1,5 +1,4 @@
 import {Plugin} from "@ckeditor/ckeditor5-core";
-import {Collection} from "@ckeditor/ckeditor5-utils";
 import {
   extractMarkerType,
   getMarkerNameBasePrefix,
