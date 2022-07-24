@@ -2,7 +2,7 @@
   "name": "betomat-plugin-ckeditor5",
   "version": "0.1.1",
   "main": "build/betomat.js",
-  "license": "GPL-2.0-or-later",
+  "license": "GPL-3.0-or-later",
   "repository": {
     "type": "git",
     "url": "https://github.com/lukasz-zaroda/betomat-plugin-ckeditor5.git"
