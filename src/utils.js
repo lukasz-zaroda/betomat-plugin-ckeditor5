@@ -116,7 +116,15 @@ export function updateResultsFromRange(range, model, findCallback, startResults,
  * @returns {string}
  */
 export function getMarkerNameBasePrefix() {
-  return 'findWord';
+  return 'betomat';
+}
+
+/**
+ *
+ * @param {string} wordGroupType
+ */
+export function getMarkerWordGroupPrefix(wordGroupType) {
+  return getMarkerNameBasePrefix() + ':' + wordGroupType;
 }
 
 /**

@@ -112,7 +112,5 @@ export default class UpdateMarkersCommand extends Command {
         wordGroupType,
       );
     });
-
-    this._state.reconvertMarkers();
   }
 }

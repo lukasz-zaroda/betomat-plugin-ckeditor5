@@ -39,8 +39,10 @@ export default class BetomatState extends Plugin {
   /**
    * Should be run after any markers modification.
    */
-  reconvertMarkers() {
-    for (const marker of this.markers) {
+  reconvertMarkers(prefix = null) {
+    const markersIterator = prefix ? this.markers.getMarkersGroup(prefix) : this.markers;
+
+    for (const marker of markersIterator) {
       this.editor.editing.reconvertMarker(marker);
     }
   }
