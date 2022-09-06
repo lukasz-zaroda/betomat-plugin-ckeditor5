@@ -1,6 +1,6 @@
 {
   "name": "betomat-plugin-ckeditor5",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "main": "build/betomat.js",
   "license": "GPL-2.0-or-later",
   "repository": {

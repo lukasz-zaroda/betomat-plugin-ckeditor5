@@ -21,6 +21,5 @@ export default class UpdateWordGroupSettingCommand extends Command {
 
   execute(wordGroupType, setting, value) {
     this._state.updateWordGroupSetting(wordGroupType, setting, value);
-    this._state.reconvertMarkers(getMarkerWordGroupPrefix(wordGroupType));
   }
 }

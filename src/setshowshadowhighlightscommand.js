@@ -18,6 +18,5 @@ export default class SetShowShadowHighlightsCommand extends Command {
    */
   execute(showShadowHighlights) {
     this._state.showShadowHighlights = showShadowHighlights;
-    this._state.reconvertMarkers();
   }
 }

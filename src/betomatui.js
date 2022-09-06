@@ -7,9 +7,9 @@ import BetomatState from "./betomatstate";
 
 export default class BetomatUI extends Plugin {
 
-	static get pluginName() {
-   return 'BetomatUI';
- }
+  static get pluginName() {
+    return 'BetomatUI';
+  }
 
 	static get requires() {
 		return [BetomatState];
@@ -23,19 +23,19 @@ export default class BetomatUI extends Plugin {
   init() {
     const editor = this.editor;
 
-		/** @type {BetomatState} */
-		const state = this.editor.plugins.get(BetomatState.pluginName);
-		const commands = this.editor.commands;
+	/** @type {BetomatState} */
+	const state = this.editor.plugins.get(BetomatState.pluginName);
+	const commands = this.editor.commands;
 
     // Register the toolbar dropdown component.
     editor.ui.componentFactory.add('betomat', locale => {
       const dropdown = createDropdown(locale);
       const formView = this.formView = new BetomatWordsFormView(
-				editor.locale,
-				state,
-				commands.get('setShowShadowHiglights'),
-				commands.get('updateWordGroupSetting'),
-			);
+	  	editor.locale,
+	  	state,
+	  	commands.get('setShowShadowHiglights'),
+	  	commands.get('updateWordGroupSetting'),
+	  );
 
       // TODO Dropdown should be disabled when in source editing mode.
 
@@ -46,20 +46,20 @@ export default class BetomatUI extends Plugin {
     });
   }
 
-	_setupDropdownButton(dropdown) {
-		const editor = this.editor;
-		const t = editor.locale.t;
+  _setupDropdownButton(dropdown) {
+  	const editor = this.editor;
+  	const t = editor.locale.t;
 
-		dropdown.buttonView.set({
-			icon: betomatWordsIcon,
-			label: 'Betomat',
-			keystroke: 'CTRL+Q',
-			tooltip: true
-		});
+  	dropdown.buttonView.set({
+  		icon: betomatWordsIcon,
+  		label: 'Betomat',
+  		keystroke: 'CTRL+Q',
+  		tooltip: true
+  	});
 
-		editor.keystrokes.set('Ctrl+Q', (data, cancelEvent) => {
-			dropdown.isOpen = true;
-			cancelEvent();
-		});
-	}
+  	editor.keystrokes.set('Ctrl+Q', (data, cancelEvent) => {
+  		dropdown.isOpen = true;
+  		cancelEvent();
+  	});
+  }
 }

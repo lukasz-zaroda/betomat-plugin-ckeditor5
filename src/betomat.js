@@ -15,7 +15,6 @@ export default class Betomat extends Plugin {
     });
   }
 
-
   static get pluginName() {
     return 'Betomat';
   }

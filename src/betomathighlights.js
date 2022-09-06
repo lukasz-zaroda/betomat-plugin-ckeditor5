@@ -30,12 +30,49 @@ export default class BetomatHighlights extends Plugin {
     });
 
     this._defineConverters();
+
+    /*
+     * Add classes representing enabled settings to the editor's source element.
+     */
+    const sourceElement = this.editor.sourceElement;
+    const shadowEnabledClass = 'betomat:highlight:shadow';
+
+    // Make shadows switchable.
+    if (state.showShadowHighlights) {
+      sourceElement.classList.add(shadowEnabledClass)
+    }
+
+    state.on('change:showShadowHighlights', (evt, propertyName, newValue) => {
+      /** @type {Element} */
+      if (newValue) {
+        sourceElement.classList.add(shadowEnabledClass)
+      } else {
+        sourceElement.classList.remove(shadowEnabledClass)
+      }
+    });
+
+    // Make highlights switchable.
+    const wordGroupHighlightedClassCreator = function (type) {
+      return 'betomat:highlight:word-group:' + type;
+    };
+
+    for (const wordGroup of state.wordGroups) {
+      if (wordGroup.isHighlighted) {
+        sourceElement.classList.add(wordGroupHighlightedClassCreator(wordGroup.type))
+      }
+
+      wordGroup.on('change:isHighlighted', (evt, propertyName, newValue) => {
+        if (newValue) {
+          sourceElement.classList.add(wordGroupHighlightedClassCreator(wordGroup.type))
+        } else {
+          sourceElement.classList.remove(wordGroupHighlightedClassCreator(wordGroup.type))
+        }
+      });
+    }
   }
 
   _defineConverters() {
     const {editor} = this;
-    /** @type {BetomatState} */
-    const state = this.editor.plugins.get(BetomatState.pluginName);
 
     const converter = ({markerName}) => {
       const id = extractMarkerId(markerName);
@@ -43,23 +80,17 @@ export default class BetomatHighlights extends Plugin {
 
       const classes = [];
 
-      if (state.showShadowHighlights) {
-        classes.push('word-finder-result--shadow');
-      }
-
-      if (state.getWordGroupSetting(type, 'isHighlighted')) {
-        classes.push(`word-finder-result--${type}`);
-      }
+      classes.push(`betomat-result--${type}`);
 
       // Marker removal from the view has a bug: https://github.com/ckeditor/ckeditor5/issues/7499
       // A minimal option is to return a new object for each converted marker...
       return {
         name: 'span',
-        classes: ['word-finder-result', ...classes],
+        classes: ['betomat-result', ...classes],
         attributes: {
           // ...however, adding a unique attribute should be future-proof..
-          'data-word-finder-id': id,
-          'data-word-finder-type': type,
+          'data-betomat-id': id,
+          'data-betomat-word-group': type,
         }
       };
     }

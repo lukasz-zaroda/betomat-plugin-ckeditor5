@@ -14,8 +14,8 @@ export default class BetomatCommands extends Plugin {
     /** @type {BetomatState} */
     const state = this.editor.plugins.get(BetomatState.pluginName);
 
-    this.editor.commands.add( 'setShowShadowHiglights', new SetShowShadowHighlightsCommand( this.editor, state ) );
-    this.editor.commands.add( 'updateMarkers', new UpdateMarkersCommand( this.editor, state ) );
+    this.editor.commands.add('setShowShadowHiglights', new SetShowShadowHighlightsCommand(this.editor, state));
+    this.editor.commands.add('updateMarkers', new UpdateMarkersCommand(this.editor, state));
     this.editor.commands.add('updateWordGroupSetting', new UpdateWordGroupSettingCommand(this.editor, state));
   }
 
