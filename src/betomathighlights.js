@@ -22,6 +22,8 @@ export default class BetomatHighlights extends Plugin {
     const state = this.editor.plugins.get(BetomatState.pluginName);
 
     const model = this.editor.model;
+    const mainView = this.editor.editing.view;
+    const mainViewRoot = mainView.document.getRoot();
 
     this.listenTo(model.document, 'change:data', (evt, batch) => {
       for (const wordGroup of state.getWordGroups()) {
@@ -43,12 +45,13 @@ export default class BetomatHighlights extends Plugin {
     }
 
     state.on('change:showShadowHighlights', (evt, propertyName, newValue) => {
-      /** @type {Element} */
-      if (newValue) {
-        sourceElement.classList.add(shadowEnabledClass)
-      } else {
-        sourceElement.classList.remove(shadowEnabledClass)
-      }
+      mainView.change(writer => {
+        if (newValue) {
+          writer.addClass(shadowEnabledClass, mainViewRoot);
+        } else {
+          writer.removeClass(shadowEnabledClass, mainViewRoot);
+        }
+  	  });
     });
 
     // Make highlights switchable.
@@ -58,15 +61,19 @@ export default class BetomatHighlights extends Plugin {
 
     for (const wordGroup of state.wordGroups) {
       if (wordGroup.isHighlighted) {
-        sourceElement.classList.add(wordGroupHighlightedClassCreator(wordGroup.type))
+        mainView.change(writer => {
+          writer.addClass(wordGroupHighlightedClassCreator(wordGroup.type), mainViewRoot);
+    	});
       }
 
       wordGroup.on('change:isHighlighted', (evt, propertyName, newValue) => {
-        if (newValue) {
-          sourceElement.classList.add(wordGroupHighlightedClassCreator(wordGroup.type))
-        } else {
-          sourceElement.classList.remove(wordGroupHighlightedClassCreator(wordGroup.type))
-        }
+        mainView.change(writer => {
+          if (newValue) {
+            writer.addClass(wordGroupHighlightedClassCreator(wordGroup.type), mainViewRoot);
+          } else {
+            writer.removeClass(wordGroupHighlightedClassCreator(wordGroup.type), mainViewRoot);
+          }
+    	  });
       });
     }
   }
